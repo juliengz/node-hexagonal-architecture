@@ -1,8 +1,8 @@
 import {
     UserRepository,
     existingUserStub,
-} from '../../../../secondary-adapters/persistence/in-memory/repository/UserRepository';
-import { IUserRepository } from '../interfaces/IUserRepository';
+} from '../../../secondary-adapters/persistence/in-memory/repository/UserRepository';
+import { IUserRepository } from '../domain/interfaces/IUserRepository';
 import { AllUsers } from './AllUsers';
 import { DeleteUser } from './DeleteUser';
 

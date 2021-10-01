@@ -1,6 +1,6 @@
 import { getConnection } from 'typeorm';
 import { IUserDto } from '../../../../core/user/domain/interfaces/IUserDto';
-import { IUserRepository } from '../../../../core/user/use-cases/interfaces/IUserRepository';
+import { IUserRepository } from '../../../../core/user/domain/interfaces/IUserRepository';
 import { UserPersistenceModel } from '../models/UserPersistenceModel';
 
 export class UserRepository implements IUserRepository {

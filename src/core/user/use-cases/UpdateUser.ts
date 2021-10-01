@@ -1,6 +1,6 @@
-import { IUserDto } from '../../domain/interfaces/IUserDto';
-import User from '../../domain/model/User';
-import { IUserRepository } from '../interfaces/IUserRepository';
+import { IUserDto } from '../domain/interfaces/IUserDto';
+import { IUserRepository } from '../domain/interfaces/IUserRepository';
+import User from '../domain/model/User';
 
 export class UpdateUser {
     private repository;

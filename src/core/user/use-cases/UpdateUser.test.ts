@@ -1,9 +1,9 @@
 import {
     UserRepository,
     existingUserStub,
-} from '../../../../secondary-adapters/persistence/in-memory/repository/UserRepository';
-import { IUserDto } from '../../domain/interfaces/IUserDto';
-import { IUserRepository } from '../interfaces/IUserRepository';
+} from '../../../secondary-adapters/persistence/in-memory/repository/UserRepository';
+import { IUserDto } from '../domain/interfaces/IUserDto';
+import { IUserRepository } from '../domain/interfaces/IUserRepository';
 import { AllUsers } from './AllUsers';
 import { UpdateUser } from './UpdateUser';
 

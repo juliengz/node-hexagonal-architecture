@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 import express from 'express';
 
-import { AllUsers } from '../../core/user/use-cases/commands/AllUsers';
-import { CreateUser } from '../../core/user/use-cases/commands/CreateUser';
-import { DeleteUser } from '../../core/user/use-cases/commands/DeleteUser';
-import { GetUser } from '../../core/user/use-cases/commands/GetUser';
-import { UpdateUser } from '../../core/user/use-cases/commands/UpdateUser';
+import { AllUsers } from '../../core/user/use-cases/AllUsers';
+import { CreateUser } from '../../core/user/use-cases/CreateUser';
+import { DeleteUser } from '../../core/user/use-cases/DeleteUser';
+import { GetUser } from '../../core/user/use-cases/GetUser';
+import { UpdateUser } from '../../core/user/use-cases/UpdateUser';
 import { UserRepository } from '../../secondary-adapters/persistence/postgres/repository/UserRepository';
 
 const PORT = 8000;
