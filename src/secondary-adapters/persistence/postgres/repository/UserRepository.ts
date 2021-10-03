@@ -23,7 +23,7 @@ export class UserRepository implements IUserRepository {
     }
 
     async findByLogin(login: string, password: string): Promise<IUserDto | null> {
-        const user = await this.repo.find({ where: { name: login, password } }) ?? null;
+        const user = await this.repo.findOne({ where: { name: login, password } }) ?? null;
 
         return user;
     }

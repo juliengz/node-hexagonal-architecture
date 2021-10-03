@@ -1,17 +1,17 @@
-import { Authenticator } from '../../../secondary-adapters/authentication/Authenticator';
+import { JWTAccessTokenManager } from '../../../secondary-adapters/auth/JWTAccessTokenManager';
 import { UserRepository } from '../../../secondary-adapters/persistence/in-memory/repository/UserRepository';
 import { IUserDto } from '../../user/domain/interfaces/IUserDto';
 import { IUserRepository } from '../../user/domain/interfaces/IUserRepository';
-import { IAuthenticator } from '../domain/interfaces/IAuthenticator';
-import { SignIn } from './SignIn';
+import { IAccessTokenManager } from '../domain/interfaces/IAccessTokenManager';
+import { GetAccessToken } from './GetAccessToken';
 
 describe('Given want to signin', () => {
     let userRepository: IUserRepository;
-    let authenticator: IAuthenticator;
+    let accestokenManager: IAccessTokenManager;
 
     beforeEach(() => {
         userRepository = new UserRepository();
-        authenticator = new Authenticator();
+        accestokenManager = new JWTAccessTokenManager();
     });
 
     describe('And my credential are valid', () => {
@@ -21,9 +21,10 @@ describe('Given want to signin', () => {
                 name: 'maeevick',
                 password: '123',
             };
-            const response = await new SignIn(userRepository, authenticator).exec('maeevick', '123');
 
-            const decodedUserFromToken = authenticator.decodeUserFromToken(response.token);
+            const response = await new GetAccessToken(userRepository, accestokenManager).exec('maeevick', '123');
+
+            const decodedUserFromToken = accestokenManager.decode(response.accessToken);
 
             expect(decodedUserFromToken.name).toEqual(user.name);
         });

@@ -2,7 +2,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { VerifyErrors } from 'jsonwebtoken';
 
-import { accessTokenSecret } from '../../../core/auth/domain/interfaces/IAuthenticator';
+import { JWT_SECRET_TOKEN_KEY } from '../../../secondary-adapters/auth/JWTAccessTokenManager';
 
 const jwt = require('jsonwebtoken');
 
@@ -12,7 +12,7 @@ export const isAuthenticaded = (req: Request, res: Response, next: NextFunction)
     if (authHeader) {
         const token = authHeader.split(' ')[1];
 
-        jwt.verify(token, accessTokenSecret, (err: VerifyErrors | null) => {
+        jwt.verify(token, JWT_SECRET_TOKEN_KEY, (err: VerifyErrors | null) => {
             if (err) {
                 return res.sendStatus(403);
             }

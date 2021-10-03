@@ -1,8 +1,22 @@
-import { init } from './primary-adapters/webserver/server';
+import { App } from './primary-adapters/http/App';
 import { PostgresConnector } from './secondary-adapters/persistence/postgres/PostgresConnector';
 
-console.info('--> start application');
+const connector = new PostgresConnector();
 
-init(new PostgresConnector());
+(async () => {
+    try {
+        await connector.connect();
+    } catch (error) {
+        //   await shutdown();
+    }
+})();
+console.info('⚡️[db]: Typeorm connection intitialized');
 
-console.info('--> application started');
+const app = new App(
+    {
+        port: '8000',
+        isProduction: false,
+    },
+);
+app.start();
+console.info('⚡️[server]: Express rest api started');
