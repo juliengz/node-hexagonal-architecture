@@ -7,4 +7,5 @@ export interface IUserRepository {
     create(data: IUserDto): Promise<IUserDto>;
     update(data: IUserDto): Promise<IUserDto>;
     delete(id: number): Promise<number>;
+    findByLogin(login: string, password: string): Promise<IUserDto | null>;
 }

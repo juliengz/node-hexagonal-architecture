@@ -1,5 +1,5 @@
 import { IUserDto } from '../../../../core/user/domain/interfaces/IUserDto';
-import { IUserRepository } from '../../../../core/user/use-cases/interfaces/IUserRepository';
+import { IUserRepository } from '../../../../core/user/domain/interfaces/IUserRepository';
 
 export const existingUserStub: IUserDto[] = [
     {
@@ -23,6 +23,10 @@ export class UserRepository implements IUserRepository {
 
     async get(id: number): Promise<IUserDto | null> {
         return this.users.find((u) => u.id === id) ?? null;
+    }
+
+    async findByLogin(login: string, password: string): Promise<IUserDto | null> {
+        return this.users.find((u) => u.name === login && u.password === password) ?? null;
     }
 
     async create(data: IUserDto): Promise<IUserDto> {

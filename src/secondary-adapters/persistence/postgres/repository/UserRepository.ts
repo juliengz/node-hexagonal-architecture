@@ -22,6 +22,12 @@ export class UserRepository implements IUserRepository {
         return user;
     }
 
+    async findByLogin(login: string, password: string): Promise<IUserDto | null> {
+        const user = await this.repo.find({ where: { name: login, password } }) ?? null;
+
+        return user;
+    }
+
     async create(data: IUserDto): Promise<IUserDto> {
         const user = await this.repo.save(data);
 

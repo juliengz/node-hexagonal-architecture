@@ -7,4 +7,7 @@ export class UserPersistenceModel extends BaseEntity {
 
     @Column({ length: 100 })
     name!: string;
+
+    @Column({ length: 100 })
+    password!: string;
 }
