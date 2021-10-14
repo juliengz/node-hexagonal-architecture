@@ -8,19 +8,22 @@ jobs:
         node-version: [16.x]
     
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - name: checkout repo
+        uses: actions/checkout@v2
 
       - name: setup node
         uses: actions/setup-node@master
         with:
           node-version: ${{ matrix.node-version }}
 
-      # install applicaion dependencies
       - name: Install dependencies
         run: |
           npm ci 
-      # build and test the apps     
-      - name: build
+
+      - name: lint
+        run: |
+          npm run lint:js
+
+      - name: test
         run: |
           npm run test
