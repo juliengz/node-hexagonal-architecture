@@ -4,7 +4,7 @@ import { IAccessTokenManager } from '../domain/interfaces/IAccessTokenManager';
 export class RefreshToken {
     private accessTokenManager;
 
-    private userRepository;
+    // private userRepository;
 
     constructor(userRepository: IUserRepository, accessTokenManager: IAccessTokenManager) {
         this.accessTokenManager = accessTokenManager;
@@ -28,7 +28,7 @@ export class RefreshToken {
         //     throw new Error('Not implemented: refresh token is invalid');
         // }
 
-        const newRefreshToken = this.accessTokenManager.generateRefreshToken(user);
+        // const newRefreshToken = this.accessTokenManager.generateRefreshToken(user);
 
         // TODO persist new refresh token
 
