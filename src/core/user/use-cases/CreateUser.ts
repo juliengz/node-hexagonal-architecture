@@ -1,6 +1,6 @@
+import User from '../domain/entities/User';
 import { IUserDto } from '../domain/interfaces/IUserDto';
 import { IUserRepository } from '../domain/interfaces/IUserRepository';
-import User from '../domain/model/User';
 
 export class CreateUser {
     private repository;

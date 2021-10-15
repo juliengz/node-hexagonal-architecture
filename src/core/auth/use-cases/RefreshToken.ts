@@ -1,13 +1,22 @@
 import { IUserRepository } from '../../user/domain/interfaces/IUserRepository';
 import { IAccessTokenManager } from '../domain/interfaces/IAccessTokenManager';
+import { IRefreshTokenRepository } from '../domain/interfaces/IRepository';
 
 export class RefreshToken {
     private accessTokenManager;
 
-    // private userRepository;
+    private userRepository;
 
-    constructor(userRepository: IUserRepository, accessTokenManager: IAccessTokenManager) {
+    private refreshTokenRepository;
+
+    constructor(
+        userRepository: IUserRepository,
+        accessTokenManager: IAccessTokenManager,
+        refreshTokenRepository: IRefreshTokenRepository,
+    ) {
+        this.userRepository = userRepository;
         this.accessTokenManager = accessTokenManager;
+        this.refreshTokenRepository = refreshTokenRepository;
     }
 
     async exec(refreshToken: string) {
@@ -15,14 +24,14 @@ export class RefreshToken {
             throw new Error('Not implemented: empty refresh token');
         }
 
-        // TODO: persist refreshtoken in db and retrieve it
-        // const storedRefreshToken = refreshTokenRepository.findOne({refresh_token: refreshToken});
-        // if(!storedRefreshToken){
-        //     throw new Error('Not implemented: refresh token does not exist or is expired');
-        // }
+        const storedRefreshToken = this.refreshTokenRepository.findOne(refreshToken);
+
+        if (!storedRefreshToken) {
+            throw new Error('Not implemented: refresh token does not exist or is expired');
+        }
 
         // TODO: add decodeRefreshToken to IAccessTokenManager
-        // const user = accessTokenManager.decodeRefreshToken(refreshToken);
+        const user = this.accessTokenManager.decodeRefreshToken(refreshToken);
 
         // if (!user) {
         //     throw new Error('Not implemented: refresh token is invalid');

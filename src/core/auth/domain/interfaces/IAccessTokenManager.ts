@@ -4,6 +4,7 @@ import { IUserDto } from '../../../user/domain/interfaces/IUserDto';
 
 export interface IAccessTokenManager {
   generate(user: IUserDto): string;
-  generateRefreshToken(user: IUserDto): string;
   decode(token: string): any;
+  generateRefreshToken(user: IUserDto): string;
+  decodeRefreshToken(token: string): any;
 }
