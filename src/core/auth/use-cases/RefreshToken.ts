@@ -30,14 +30,13 @@ export class RefreshToken {
             throw new Error('Not implemented: refresh token does not exist or is expired');
         }
 
-        // TODO: add decodeRefreshToken to IAccessTokenManager
         const user = this.accessTokenManager.decodeRefreshToken(refreshToken);
 
-        // if (!user) {
-        //     throw new Error('Not implemented: refresh token is invalid');
-        // }
+        if (user) {
+            throw new Error('Not implemented: refresh token is invalid');
+        }
 
-        // const newRefreshToken = this.accessTokenManager.generateRefreshToken(user);
+        const newRefreshToken = this.accessTokenManager.generateRefreshToken(user);
 
         // TODO persist new refresh token
 
